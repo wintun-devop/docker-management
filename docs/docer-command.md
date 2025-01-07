@@ -12,9 +12,13 @@ docker network create CUSTOM_NETWORK_NAME
 docker network inspect NETWORK_ID
 ```
 
-### Mysql Contain on Custom Docker Network
+### Mysql Contain on Custom Docker Network(not port export)
 ```
 docker run --name learn-mysql-8-0-40 --network mynet-1 -e MYSQL_ROOT_PASSWORD=YourRootPassword -d mysql:latest
+```
+### Mysql Contain on Custom Docker Network(with port export)
+```
+docker run --name learn-mysql-8-0-40 --network mynet-1 -e MYSQL_ROOT_PASSWORD=YourRootPassword -p 3306:3306 -d mysql:latest
 ```
 - check running conntainer
 ```
