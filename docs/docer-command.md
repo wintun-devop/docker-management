@@ -32,3 +32,13 @@ docker exec -it MysqlContainerID mysql -u root -p
 ```
 docker run --name mysqlwebadmin01 -e PMA_HOST=your_mysql_container_hostname --network CUSTOM-NETWORK -p 8080:80 -d phpmyadmin
 ```
+
+### Mysql 8.4.3 and AssocitedPHPMyadmin
+```
+docker run --name dev-mysql-8-4-3 --network mynet-1 -e MYSQL_ROOT_PASSWORD=Abc123Abc123 -p 3306:3306 -d mysql:8.4.3
+```
+```
+docker run --name PhpMyadmin-dev-mysql-8-4-3 -e PMA_HOST=dev-mysql-8-4-3 --network mynet-1 -p 8081:80 -d phpmyadmin
+```
+
+
