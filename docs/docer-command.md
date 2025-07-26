@@ -54,3 +54,7 @@ docker exec your_container_id_or_name cat /path/to/file
 ```
 docker exec -it Your_Container_ID mysql -u your_db_user -p
 ```
+### Build Docker File
+```
+docker build -t my-image-name .
+```
