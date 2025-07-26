@@ -41,4 +41,7 @@ docker run --name dev-mysql-8-4-3 --network mynet-1 -e MYSQL_ROOT_PASSWORD=Abc12
 docker run --name PhpMyadmin-dev-mysql-8-4-3 -e PMA_HOST=dev-mysql-8-4-3 --network mynet-1 -p 8081:80 -d phpmyadmin
 ```
 
-
+### To enter mysql docker conntainer
+```
+docker exec -it Your_Container_ID mysql -u your_db_user -p
+```
