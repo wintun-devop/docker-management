@@ -58,3 +58,6 @@ docker exec -it Your_Container_ID mysql -u your_db_user -p
 ```
 docker build -t my-image-name .
 ```
+```
+docker run -d -p 8080:80 --network my-custom-net --name my-container my-image-name
+```
