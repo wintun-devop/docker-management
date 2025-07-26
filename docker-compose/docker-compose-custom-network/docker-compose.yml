@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  web:
+    image: nginx
+    networks:
+      - frontend
+
+  db:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: example
+    networks:
+      - backend
+
+  app:
+    build: .
+    networks:
+      - frontend
+      - backend
+
+networks:
+  frontend:
+    driver: bridge
+  backend:
+    driver: bridge

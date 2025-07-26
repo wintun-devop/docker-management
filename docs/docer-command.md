@@ -40,6 +40,15 @@ docker run --name dev-mysql-8-4-3 --network mynet-1 -e MYSQL_ROOT_PASSWORD=Abc12
 ```
 docker run --name PhpMyadmin-dev-mysql-8-4-3 -e PMA_HOST=dev-mysql-8-4-3 --network mynet-1 -p 8081:80 -d phpmyadmin
 ```
+### Acces to Docker
+- direct access to docker container shell
+```
+docker exec -it your_container_id_or_name /bin/bash
+```
+- read only file access 
+```
+docker exec your_container_id_or_name cat /path/to/file
+```
 
 ### To enter mysql docker conntainer
 ```
