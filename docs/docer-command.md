@@ -54,6 +54,13 @@ docker exec your_container_id_or_name cat /path/to/file
 ```
 docker exec -it Your_Container_ID mysql -u your_db_user -p
 ```
+### Build Docker File
+```
+docker build -t my-image-name .
+```
+```
+docker run -d -p 8080:80 --network my-custom-net --name my-container my-image-name
+```
 
 ### docker volumes
 - create docker volume to custom location
