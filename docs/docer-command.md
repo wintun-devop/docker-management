@@ -54,3 +54,32 @@ docker exec your_container_id_or_name cat /path/to/file
 ```
 docker exec -it Your_Container_ID mysql -u your_db_user -p
 ```
+
+### docker volumes
+- create docker volume to custom location
+```
+docker volume create --driver local --opt type=none --opt o=bind --opt device="G:/docker_volumes/myvol" myvol
+```
+
+### PHP 8.4 with apache custom volume
+- create cutom docker volume
+```
+docker volume create --driver local --opt type=none --opt o=bind --opt device="D:/docker_volumes/php84" php84
+```
+- docker image
+```
+docker pull php:8.4-apache
+```
+- run container with custom volume and custom location
+```
+docker run -d --name php84_app1 --network mynet-1 -p 8082:80 -v D:/docker_volumes/php84/app1/src:/var/www/html php:8.4-apache
+```
+```
+docker exec php84_app1 php -m | findstr /R "mysqli pdo_mysql"
+```
+```
+docker exec php84_app1 php -m | Select-String 'mysqli|pdo_mysql'
+```
+```
+docker exec php84_app1 bash -c "php -m | grep -E 'mysqli|pdo_mysql'"
+```
