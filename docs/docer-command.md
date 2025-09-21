@@ -90,3 +90,34 @@ docker exec php84_app1 php -m | Select-String 'mysqli|pdo_mysql'
 ```
 docker exec php84_app1 bash -c "php -m | grep -E 'mysqli|pdo_mysql'"
 ```
+
+
+###
+```
+Get-Item "C:\Users\cloud-wintun\AppData\Local\Docker\wsl\disk\docker_data.vhdx" | Select-Object Length
+```
+```
+Optimize-VHD -Path "C:\Users\cloud-wintun\AppData\Local\Docker\wsl\disk\docker_data.vhdx" -Mode Full
+```
+
+
+###
+- only one time require
+```
+docker network create dev-net-1
+```
+- docker 8 lts
+```
+docker pull mysql:8.4.6
+```
+- phpmyadmin latest
+```
+docker pull phpmyadmin
+```
+- mysql8.4.6lts with custom data volume
+```
+docker run --name dev-mysql-8-4-6 --network dev-net-1 -e MYSQL_ROOT_PASSWORD=Abc123Abc123 -p 3307:3306 -v D:\docker_volumes\mysql846-data:/var/lib/mysql -d mysql:8.4.6
+```
+```
+docker run --name phpMyadmin4mysql846 -e PMA_HOST=dev-mysql-8-4-6 --network dev-net-1 -p 8083:80  -d phpmyadmin
+```
