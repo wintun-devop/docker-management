@@ -101,7 +101,7 @@ Optimize-VHD -Path "C:\Users\cloud-wintun\AppData\Local\Docker\wsl\disk\docker_d
 ```
 
 
-###
+### Msql with phpmyadmin
 - only one time require
 ```
 docker network create dev-net-1
@@ -120,4 +120,9 @@ docker run --name dev-mysql-8-4-6 --network dev-net-1 -e MYSQL_ROOT_PASSWORD=Abc
 ```
 ```
 docker run --name phpMyadmin4mysql846 -e PMA_HOST=dev-mysql-8-4-6 --network dev-net-1 -p 8083:80  -d phpmyadmin
+```
+
+### Status Check
+```
+docker ps --format "table {{.ID}}\t{{.Names}}\t{{.Networks}}"
 ```
