@@ -1,0 +1,12 @@
+.kiro
+.next
+.git
+.gitignore
+*.md
+.env
+.env.local
+.env.*.local
+sample-data
+docs
+.claude
+node_modules

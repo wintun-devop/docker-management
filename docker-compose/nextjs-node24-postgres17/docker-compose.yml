@@ -1,0 +1,26 @@
+services:
+  docker_db_postgres:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: dbadmin
+      POSTGRES_PASSWORD: xyz123xyz123xyz123
+      POSTGRES_DB: app_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+  nextjs_app:
+    build: .
+    restart: unless-stopped
+    depends_on:
+      - docker_db_postgres
+    environment:
+      DATABASE_URL: "postgresql://dbadmin:xyz123xyz123xyz123@docker_db_postgres:5432/app_db"
+      SESSION_SECRET: "+5o1iEyKs3iZpw3PGEs0GYBIG+W259TSVsb8P2hrNaE="
+      SESSION_TIMEOUT_MINUTES: "30"
+      NODE_ENV: production
+    ports:
+      - "3001:3000"
+volumes:
+  postgres_data:
