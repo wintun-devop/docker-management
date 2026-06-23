@@ -1,0 +1,32 @@
+networks:
+  mynet:
+    external: true
+
+services:
+  mariadb:
+    image: mariadb:10.11.18
+    container_name: mariadb-10-11-18
+    restart: unless-stopped
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MARIADB_USER: ${DB_USER}
+      MARIADB_PASSWORD: ${DB_PASSWORD}
+      MARIADB_DATABASE: ${SAMPLE_DATABASE}
+    ports:
+      - "3306:3306"
+    volumes:
+      - D:/docker_volumes/mariadb_10_11_18:/var/lib/mysql
+    networks:
+      - mynet
+
+  phpmyadmin:
+    image: phpmyadmin
+    container_name: phpmyadmin-mariadb_10_11_18
+    restart: unless-stopped
+    environment:
+      PMA_HOST: mariadb-10-11-18
+      UPLOAD_LIMIT: 900M
+    ports:
+      - "8081:80"
+    networks:
+      - mynet
